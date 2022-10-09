@@ -34,7 +34,3 @@ Note: If you're using Linux Bash for Windows, [see this guide](https://www.howto
 - [electronjs.org/docs](https://electronjs.org/docs) - all of Electron's documentation
 - [electron/electron-quick-start](https://github.com/electron/electron-quick-start) - a very basic starter Electron app
 - [hokein/electron-sample-apps](https://github.com/hokein/electron-sample-apps) - small demo apps for the various Electron APIs
-
-## License
-
-[CC0 1.0 (Public Domain)](LICENSE.md)
