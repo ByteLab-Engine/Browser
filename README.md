@@ -5,6 +5,7 @@ ByteLab Browser is an extendable and customizable web browser built on `Electron
 </div>
 
 <h3>Features:</h3>
+
 - **Modern UI:** With a UI built on React, it is easy to customize ByteLab Browser and add new features.
 
 - **Ghostery Adblocker:** ByteLab Browser uses [Ghostery Adblocker](https://github.com/ghostery/adblocker) to block all ads and trackers, speeding up the browsing experience.
@@ -39,6 +40,8 @@ Make sure you have build tools installed. You can install them by running this c
 $ npm i -g windows-build-tools
 ```
 
+---
+
 ```bash
 $ yarn # Install needed depedencies.
 $ yarn rebuild # Rebuild native modules using Electron headers.
@@ -48,9 +51,9 @@ $ yarn dev # Run Wexond in development mode
 #### More commands
 
 ```bash
-$ yarn compile-win32 # Package Wexond for Windows
-$ yarn compile-linux # Package Wexond for Linux
-$ yarn compile-darwin # Package Wexond for macOS
+$ yarn compile-win32 # Package ByteLab for Windows
+$ yarn compile-linux # Package ByteLab for Linux
+$ yarn compile-darwin # Package ByteLab for macOS
 $ yarn lint # Runs linter
 $ yarn lint-fix # Runs linter and automatically applies fixes
 ```
@@ -59,8 +62,11 @@ More commands can be found in [`package.json`](package.json).
 
 
 <h3>Credits</h3>
+
 - Wexond Web Browser 
+
 - Skye Web Browser
+
 - Electron JS, Node, and other dependencies
  
 <h3>License</h3>
