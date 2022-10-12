@@ -1,0 +1,103 @@
+{
+  "appId": "com.bytelab.browser",
+  "productName": "ByteLab-Browser",
+  "nsis": {
+    "include": "static/installer.nsh"
+  },
+  "generateUpdatesFilesForAllChannels": true,
+  "asar": true,
+  "directories": {
+    "output": "dist",
+    "buildResources": "static/icons"
+  },
+  "files": ["build/**/*", "package.json", "static/**/*"],
+  "publish": [
+    "github",
+    {
+      "provider": "snapStore",
+      "repo": "browser",
+      "channels": ["stable"]
+    }
+  ],
+  "deb": {
+    "fpm": ["static/skye.metainfo.xml=/usr/share/metainfo/skye.metainfo.xml"]
+  },
+  "rpm": {
+    "fpm": ["static/skye.metainfo.xml=/usr/share/metainfo/skye.metainfo.xml"]
+  },
+  "pacman": {
+    "fpm": ["static/skye.metainfo.xml=/usr/share/metainfo/skye.metainfo.xml"]
+  },
+  "linux": {
+    "category": "Network",
+    "executableName": "browser",
+    "desktop": {
+      "Comment": "Browse the Web",
+      "GenericName": "Internet",
+      "StartupNotify": false,
+      "Categories": "Internet"
+    },
+    "target": [
+      {
+        "target": "AppImage",
+        "arch": ["x64", "arm64"]
+      },
+      {
+        "target": "deb",
+        "arch": ["x64", "arm64"]
+      },
+      {
+        "target": "rpm",
+        "arch": ["x64", "arm64"]
+      },
+      {
+        "target": "pacman",
+        "arch": ["x64", "arm64"]
+      },
+      {
+        "target": "tar.gz",
+        "arch": ["x64", "arm64"]
+      },
+      {
+        "target": "snap",
+        "arch": ["x64", "arm64"]
+      }
+    ]
+  },
+  "win": {
+    "target": [
+      {
+        "target": "nsis-web",
+        "arch": ["x64", "ia32"]
+      },
+      {
+        "target": "zip",
+        "arch": ["x64", "ia32"]
+      }
+    ]
+  },
+  "mac": {
+    "category": "public.app-category.navigation",
+    "target": [
+      {
+        "target": "default",
+        "arch": "universal"
+      }
+    ]
+  },
+  "fileAssociations": [
+    {
+      "name": "Document",
+      "description": "ByteLab",
+      "role": "Viewer",
+      "ext": "html"
+    }
+  ],
+  "protocols": [
+    {
+      "name": "ByteLab",
+      "role": "Viewer",
+      "schemes": ["http", "https"]
+    }
+  ]
+}
