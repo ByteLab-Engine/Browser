@@ -45,7 +45,7 @@ $ npm i -g windows-build-tools
 ```bash
 $ yarn # Install needed depedencies.
 $ yarn rebuild # Rebuild native modules using Electron headers.
-$ yarn dev # Run Wexond in development mode
+$ yarn dev # Run ByteLab in development mode
 ```
 
 #### More commands
