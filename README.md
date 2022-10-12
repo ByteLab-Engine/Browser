@@ -6,9 +6,13 @@ ByteLab Browser is an extendable and customizable web browser built on `Electron
 
 <h3>Features:</h3>
 - **Modern UI:** With a UI built on React, it is easy to customize ByteLab Browser and add new features.
+
 - **Ghostery Adblocker:** ByteLab Browser uses [Ghostery Adblocker](https://github.com/ghostery/adblocker) to block all ads and trackers, speeding up the browsing experience.
+
 - **Chromium under the hood:** Electron is based on Chromium, which allows ByteLab browser to use features like Chrome Dev Tools and support all websites.
+
 - **Chrome Extensions:** ByteLab browser supports many Chrome extensions with the ability to download from the Chrome Web Store `*(WIP)`
+
 - `And more, like tab groups, settings, a bookmarks bar, find in page, search history, download page ... `
 
 <h3> Why Electron? </h3>
