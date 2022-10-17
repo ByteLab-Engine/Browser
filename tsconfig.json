@@ -1,24 +1,25 @@
 {
   "compilerOptions": {
-    "outDir": "./build/",
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "skipLibCheck": true,
-    "module": "None",
-    "target": "es2017",
-    "jsx": "react",
-    "allowJs": true,
+    "target": "es2021",
+    "module": "commonjs",
+    "lib": ["dom", "es2021"],
+    "declaration": true,
+    "declarationMap": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "pretty": true,
     "sourceMap": true,
+    "baseUrl": "./src",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "lib": ["dom", "esnext"],
-    "experimentalDecorators": true,
-    "baseUrl": "./",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "outDir": "release/app/dist"
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+  "exclude": ["test", "release/build", "release/app/dist", ".erb/dll", "assets"]
 }

@@ -4,11 +4,9 @@
 ByteLab Browser is an extendable and customizable web browser built on `Electron`, `React`, and other new web technologies.
 </div>
 
-<h3>Features:</h3>
+### Features:
 
 - **Modern UI:** With a UI built on React, it is easy to customize ByteLab Browser and add new features.
-
-- **Ghostery Adblocker:** ByteLab Browser uses [Ghostery Adblocker](https://github.com/ghostery/adblocker) to block all ads and trackers, speeding up the browsing experience.
 
 - **Chromium under the hood:** Electron is based on Chromium, which allows ByteLab browser to use features like Chrome Dev Tools and support all websites.
 
@@ -16,60 +14,70 @@ ByteLab Browser is an extendable and customizable web browser built on `Electron
 
 - `And more, like tab groups, settings, a bookmarks bar, find in page, search history, download page ... `
 
-<h3> Why Electron? </h3>
+### Why Electron? 
+
 Many web browsers are built on Chromium. Chromium is a powerful web engine, but it is complex and hard to work on.
 
-Using a framework like Electron allows us to make an easy-to-develop and customize web browser that has the power of Chromium. 
+Using a framework like Electron allows us to make an easy-to-develop and customize web browser that has the power of Chromium.
 
 Performance is also as fast or faster than Chromium based web browsers thanks to Electron's low overhead.
 
 
-<h3>Screenshots</h3>
-Coming soon
 
-<h3> Development </h3>
+### Run locally
 
-Prerequsites: [`The latest version of Node JS (or 18.7.0)`](https://nodejs.org/en/) and [`Yarn`](https://yarnpkg.com/getting-started/migration)
+1. Install NPM packages
+   ```sh
+   npm install
+   ```
+2. Run the app
+   ```sh
+   npm start
+   ```
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-#### Windows
+<!-- CONTRIBUTING -->
 
-Make sure you have build tools installed. You can install them by running this command as **administrator**:
+### Contributing
 
-```bash
-$ npm i -g windows-build-tools
-```
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
----
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
-```bash
-$ yarn # Install needed depedencies.
-$ yarn rebuild # Rebuild native modules using Electron headers.
-$ yarn dev # Run ByteLab in development mode
-```
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-#### More commands
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-```bash
-$ yarn compile-win32 # Package ByteLab for Windows
-$ yarn compile-linux # Package ByteLab for Linux
-$ yarn compile-darwin # Package ByteLab for macOS
-$ yarn lint # Runs linter
-$ yarn lint-fix # Runs linter and automatically applies fixes
-```
+### Social Channels
 
-More commands can be found in [`package.json`](package.json).
+To stay up to date with the project, submit bugs, and submit features, please join:
 
+- Github Discussions
 
-<h3>Credits</h3>
+- Subreddit: [https://www.reddit.com/r/ByteLab/](https://www.reddit.com/r/ByteLab/)
 
-- Wexond Web Browser 
+More social channels are coming soon
+
+<!-- LICENSE -->
+
+## Credits
+
+- Wexond Web Browser
+
+- BonBon Browser
 
 - Skye Web Browser
 
 - Electron JS, Node, and other dependencies
- 
-<h3>License</h3>
-GPL 3.0
 
-By sending a Pull Request, you agree that your code may be relicensed or sublicensed.
+
+## ⚖ License
+
+Distributed under the GPL-3.0 License. See `LICENSE.txt` for more information.
+

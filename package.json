@@ -1,123 +1,313 @@
 {
-  "name": "bytelab",
-  "version": "0.1.0",
-  "sideEffects": false,
-  "description": "Web Browser.",
+  "description": "ByteLab Browser",
   "keywords": [
-    "web-browser",
-    "material",
+    "browser",
     "electron",
-    "react",
-    "mobx",
-    "styled-components"
+    "typescript",
+    "react"
   ],
+  "version": "0.2.0",
   "homepage": "https://github.com/ByteLab-Engine/Browser",
-  "main": "build/main.bundle.js",
-  "author": "ByteLab <crabbythedev@gmail.com>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ByteLab-Engine/Browser.git"
-  },
   "bugs": {
     "url": "https://github.com/ByteLab-Engine/Browser/issues"
   },
-  "scripts": {
-    "dev-renderer": "cross-env DEV=1 webpack serve --config webpack.config.renderer.js",
-    "dev-webpack": "cross-env DEV=1 webpack",
-    "build-renderer": "webpack --config webpack.config.renderer.js",
-    "dev": "cross-env START=1 npm run watch",
-    "build": "rimraf build && concurrently \"npm run build-renderer\" \"webpack\"",
-    "ci-build": "node scripts/ci-build.js",
-    "start": "electron .",
-    "watch": "concurrently \"npm run dev-renderer\" \"npm run dev-webpack\"",
-    "compile-win32": "npm run build && electron-builder -w",
-    "compile-darwin": "npm run build && electron-builder -m",
-    "compile-linux": "npm run build && electron-builder -l",
-    "lint": "eslint \"src/**/*.ts*\" \"src/**/*.tsx*\"",
-    "lint-fix": "npm run lint -- --fix",
-    "rebuild": "electron-builder install-app-deps",
-    "postinstall": "patch-package"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ByteLab-Engine/Browser.git"
   },
-  "devDependencies": {
-    "@babel/core": "^7.17.0",
-    "@cliqz/adblocker-electron": "1.23.4",
-    "@electron/remote": "^2.0.4",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.4",
-    "@types/animejs": "^3.1.3",
-    "@types/chrome": "0.0.178",
-    "@types/crypto-js": "^4.1.0",
-    "@types/jszip": "^3.4.1",
-    "@types/node": "17.0.15",
-    "@types/node-fetch": "^3.0.3",
-    "@types/react": "17.0.39",
-    "@types/react-dom": "17.0.11",
-    "@types/react-helmet": "^6.1.5",
-    "@types/rimraf": "^3.0.0",
-    "@types/styled-components": "5.1.22",
-    "@typescript-eslint/eslint-plugin": "^5.10.2",
-    "@typescript-eslint/parser": "^5.10.2",
-    "@wexond/rpc-core": "^1.0.3",
-    "@wexond/rpc-electron": "^1.0.3",
-    "animejs": "^3.2.1",
-    "awesome-node-loader": "^1.1.1",
-    "babel-loader": "^8.2.2",
-    "concurrently": "^7.0.0",
-    "copy-webpack-plugin": "^10.2.4",
-    "cross-env": "7.0.3",
-    "electron": "^21.1.0",
-    "electron-builder": "23.6.0",
-    "electron-updater": "5.3.0",
-    "eslint": "^8.8.0",
-    "eslint-config-prettier": "^8.2.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.28.0",
-    "file-loader": "^6.2.0",
-    "file-type": "17.1.1",
-    "fork-ts-checker-webpack-plugin": "^7.0.0",
-    "html-webpack-plugin": "^5.3.1",
-    "icojs": "^0.16.0",
-    "jszip": "^3.6.0",
-    "mobx": "6.3.13",
-    "mobx-react-lite": "3.2.3",
-    "node-bookmarks-parser": "^2.0.0",
-    "node-fetch": "^3.2.0",
-    "prettier": "2.5.1",
-    "pretty-bytes": "5.6.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-refresh": "^0.11.0",
-    "react-windows-controls": "1.1.1",
-    "rimraf": "^3.0.2",
-    "source-map-support": "^0.5.19",
-    "styled-components": "^5.2.3",
-    "terser": "^5.6.1",
-    "terser-webpack-plugin": "^5.3.1",
-    "ts-loader": "^9.2.6",
-    "tsconfig-paths-webpack-plugin": "^3.5.1",
-    "typescript": "^4.5.5",
-    "typescript-plugin-styled-components": "^2.0.0",
-    "webpack": "5.74.0",
-    "webpack-bundle-analyzer": "^4.4.1",
-    "webpack-cli": "4.10.0",
-    "webpack-dev-server": "^4.7.4",
-    "webpack-merge": "^5.7.3"
+  "license": "GPL-3.0",
+  "author": {
+    "name": "CrabbyTheDev",
+    "email": "crabbythedev@gmail.com"
+  },
+  "main": "./src/main/main.ts",
+  "scripts": {
+    "build": "concurrently \"npm run buildmain\" \"npm run buildrenderer\"",
+    "buildmain": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.main.prod.ts",
+    "buildrenderer": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.prod.ts",
+    "lint": "cross-env NODE_ENV=development eslint . --ext .js,.jsx,.ts,.tsx",
+    "package": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build --publish=never",
+    "prepare": "husky install",
+    "postinstall": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.dev.dll.ts",
+
+    "rebuild": "electron-rebuild --parallel --types prod,dev,optional --module-dir release/app",
+    "start": "ts-node ./.erb/scripts/check-port-in-use.js && npm run startrenderer",
+    "startmain": "cross-env NODE_ENV=development electronmon -r ts-node/register/transpile-only .",
+    "startpreload": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.preload.dev.ts",
+    "startrenderer": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack serve --config ./.erb/configs/webpack.config.renderer.dev.ts",
+    "test": "jest"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "cross-env NODE_ENV=development eslint --cache"
+    ],
+    "*.json,.{eslintrc,prettierrc}": [
+      "prettier --ignore-path .eslintignore --parser json --write"
+    ],
+    "*.{css,scss}": [
+      "prettier --ignore-path .eslintignore --single-quote --write"
+    ],
+    "*.{html,md,yml}": [
+      "prettier --ignore-path .eslintignore --single-quote --write"
+    ]
+  },
+  "browserslist": [],
+  "prettier": {
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": [
+          ".prettierrc",
+          ".eslintrc"
+        ],
+        "options": {
+          "parser": "json"
+        }
+      }
+    ]
+  },
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "release/app/node_modules",
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx",
+      "json"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/.erb/mocks/fileMock.js",
+      "\\.(css|less|sass|scss)$": "identity-obj-proxy",
+      "^uuid$": "<rootDir>/node_modules/uuid/dist/index.js"
+    },
+    "setupFiles": [
+      "./.erb/scripts/check-build-exists.ts"
+    ],
+    "testEnvironment": "jsdom",
+    "testEnvironmentOptions": {
+      "url": "http://localhost/"
+    },
+    "testPathIgnorePatterns": [
+      "release/app/dist",
+      "__tests__/beforeAll.tsx"
+    ],
+    "transform": {
+      "\\.(ts|tsx|js|jsx)$": "ts-jest"
+    }
+  },
+  "optionalDependencies": {
+    "dmg-license": "^1.0.11"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.0.0-beta2",
-    "@fortawesome/fontawesome-svg-core": "^1.3.0-beta2",
-    "@fortawesome/free-regular-svg-icons": "^6.0.0-beta2",
-    "@fortawesome/free-solid-svg-icons": "^6.0.0-beta2",
-    "@fortawesome/react-fontawesome": "^0.1.17",
-    "@seald-io/nedb": "^2.2.1",
-    "electron-chrome-extensions": "^3.8.0",
-    "fast-average-color": "^7.0.1",
-    "hex-to-rgb": "^1.0.1",
-    "jwt-decode": "^3.1.2",
-    "patch-package": "^6.4.7",
-    "postinstall-postinstall": "^2.1.0",
-    "react-helmet": "^6.1.0",
-    "react-image-fallback": "^8.0.0",
-    "react-query": "^3.34.13",
-    "react-use": "^17.3.2"
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.3",
+    "@mui/material": "^5.8.3",
+    "@reduxjs/toolkit": "^1.8.2",
+    "clsx": "^1.1.1",
+    "easy-auto-launch": "^6.0.2",
+    "electron-chrome-extensions": "^3.9.0",
+    "electron-chrome-extensions-production": "^3.13.0",
+    "electron-context-menu": "^3.2.0",
+    "electron-log": "^4.4.8",
+    "electron-store": "^8.0.2",
+    "electron-updater": "^5.0.1",
+    "framer-motion": "^6.5.1",
+    "i18next": "^21.8.13",
+    "i18next-browser-languagedetector": "^6.1.4",
+    "node-machine-id": "^1.1.12",
+    "nucleus-analytics": "^4.0.0",
+    "parse-domain": "^5.0.0",
+    "rage-edit": "^1.2.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-i18next": "^11.18.0",
+    "react-redux": "^8.0.2",
+    "react-rnd": "^10.3.7",
+    "react-virtualized-auto-sizer": "^1.0.6",
+    "react-window": "^1.8.7",
+    "redux-persist": "^6.0.0",
+    "request": "^2.88.2",
+    "unzip-crx-3": "^0.2.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
+    "@teamsupercell/typings-for-css-modules-loader": "^2.5.1",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@types/chrome": "^0.0.190",
+    "@types/crypto-js": "^4.1.1",
+    "@types/jest": "^27.5.1",
+    "@types/node": "17.0.33",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "@types/react-test-renderer": "^18.0.0",
+    "@types/react-virtualized-auto-sizer": "^1.0.1",
+    "@types/react-window": "^1.8.5",
+    "@types/redux-mock-store": "^1.0.3",
+    "@types/request": "^2.48.8",
+    "@types/rimraf": "^3.0.2",
+    "@types/sqlite3": "^3.1.8",
+    "@types/terser-webpack-plugin": "^5.0.4",
+    "@types/uuid": "^8.3.4",
+    "@types/webpack-bundle-analyzer": "^4.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "browserslist-config-erb": "^0.0.3",
+    "chalk": "^4.1.2",
+    "concurrently": "^7.1.0",
+    "core-js": "^3.22.5",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^3.4.1",
+    "detect-port": "^1.3.0",
+    "electron": "^21.1.1",
+    "electron-builder": "23.6.0",
+    "electron-devtools-installer": "^3.2.0",
+    "electron-notarize": "^1.2.1",
+    "electron-rebuild": "^3.2.7",
+    "electronmon": "^2.0.2",
+    "eslint": "^8.15.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-erb": "^4.0.3",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-import-resolver-webpack": "^0.13.2",
+    "eslint-plugin-compat": "^4.0.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.2.2",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
+    "lint-staged": "^12.4.1",
+    "mini-css-extract-plugin": "^2.6.0",
+    "prettier": "^2.6.2",
+    "react-refresh": "^0.13.0",
+    "react-test-renderer": "^18.2.0",
+    "redux-mock-store": "^1.5.4",
+    "rimraf": "^3.0.2",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
+    "sqlite3": "^5.0.8",
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.1",
+    "ts-jest": "^28.0.2",
+    "ts-loader": "^9.3.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.73.0",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.3",
+    "webpack-merge": "^5.8.0"
+  },
+  "overrides": {
+    "got": "^11.8.5",
+    "glob-parent": "^6.0.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "build": {
+    "productName": "ByteLab",
+    "appId": "org.erb.Browser",
+    "asar": true,
+    "asarUnpack": "**\\*.{node,dll}",
+    "files": [
+      "dist",
+      "node_modules",
+      "package.json"
+    ],
+    "portable": {
+      "artifactName": "ByteLab Browser - portable.exe"
+    },
+    "protocols": [
+      {
+        "name": "ByteLab",
+        "schemes": [
+          "https",
+          "http",
+          "bytelab"
+        ],
+        "role": "Shell"
+      }
+    ],
+    "afterSign": ".erb/scripts/notarize.js",
+    "mac": {
+      "target": {
+        "target": "default",
+        "arch": [
+          "arm64",
+          "x64"
+        ]
+      },
+      "type": "distribution",
+      "hardenedRuntime": true,
+      "entitlements": "assets/entitlements.mac.plist",
+      "entitlementsInherit": "assets/entitlements.mac.plist",
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Development"
+    },
+    "directories": {
+      "app": "release/app",
+      "buildResources": "assets",
+      "output": "release/build"
+    },
+    "extraResources": [
+      "./assets/**",
+      "./node_modules/electron-chrome-extensions-production/dist/**"
+    ],
+    "publish": {
+      "provider": "github",
+      "owner": "ByteLab",
+      "repo": "bytelab-browser"
+    }
+  },
+  "devEngines": {
+    "node": ">=14.x",
+    "npm": ">=7.x"
+  },
+  "electronmon": {
+    "patterns": [
+      "!**/**",
+      "src/main/*"
+    ],
+    "logLevel": "quiet"
   }
 }
