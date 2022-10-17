@@ -1,0 +1,44 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.MuiButton-contained {
+  background-color: var(--color-icon-primary) !important;
+}
+
+.justify-content-right {
+  div, ul, li, input {
+    justify-content: right;
+    text-align: right;
+  }
+}
+
+.MuiInputBase-root {
+  div, svg {
+    color: var(--color-text-primary) !important;
+  }
+
+  fieldset {
+    border-color: var(--color-border);
+  }
+}
+
+.MuiTextField-root {
+  input {
+    background-color: var(--color-icon-secondary);
+  }
+}
+
+.MuiChip-filled {
+  background-color: var(--color-background-tertiary) !important;
+  color: var(--color-text-primary) !important;
+}

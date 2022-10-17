@@ -1,0 +1,33 @@
+#Minimap__container {
+  position: fixed;
+  display: flex;
+  right: 0;
+  width: 185px;
+  height: 100%;
+  user-select: none;
+  z-index: 12;
+
+  #Minimap__view {
+    background: white;
+    opacity: 0.2;
+    width: 100%;
+    position: absolute;
+    user-select: none;
+    z-index: 2;
+  }
+
+  .Minimap__window {
+    background-color: var(--color-background-tertiary);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+
+    img {
+      user-select: none;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.CloseButton__container {
+  position: absolute;
+  padding: 10px;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+
+  svg {
+    height: 18px;
+  }
+}
+
+.CloseButton__with-scrollbar {
+  right: 17px !important;
+}
+
+.CloseButton__container:hover{
+  background-color: var(--color-red-close);
+
+  svg {
+    height: 20px;
+  }
+}

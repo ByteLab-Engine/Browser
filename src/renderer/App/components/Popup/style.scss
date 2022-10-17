@@ -1,0 +1,21 @@
+#Popup__container {
+  z-index: 2000;
+  height: auto;
+  width: 300px;
+  top: calc(50% - 150px) !important;
+  left: calc(50% - 150px) !important;
+  background-color: var(--color-background-tertiary);
+  color: var(--color-text-primary);
+  border-radius: 5px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  padding: 20px;
+  position: fixed !important;
+  flex-direction: column;
+}
+
+#Popup__title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}

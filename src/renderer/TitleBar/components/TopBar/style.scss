@@ -1,0 +1,154 @@
+#TopBar__container {
+  display: flex;
+  height: 30px;
+  position: fixed;
+  width: calc(100%);
+  background-color: var(--color-background-tertiary);
+  color: var(--color-text-primary);
+  z-index: 1000;
+  -webkit-app-region: drag;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.macTitleBar {
+  padding-left: 80px;
+  width: calc(100% - 80px) !important;
+}
+
+#TopBar__tabs-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  -webkit-app-region: no-drag;
+
+  .TopBar__tab-container {
+    display: flex;
+    min-width: fit-content;
+    height: 100%;
+  }
+
+  .TopBar__closeTab {
+    color: var(--color-icon-primary);
+    transform: translateX(-3px);
+    position: relative;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+
+    svg {
+      height: 15px;
+    }
+
+    svg:hover {
+      height: 17px;
+    }
+  }
+
+  .TopBar__closeTab:hover {
+    background-color: var(--color-background-5);
+  }
+
+  .TopBar__tab {
+    display: flex;
+    padding-left: 10px;
+    padding-right: 25px;
+    align-items: center;
+    min-width: 100px;
+    font-size: 14px;
+    border-radius: 3px;
+    color: var(--color-text-primary);
+    border-right: 1px solid var(--color-border);
+    margin-right: -24px;
+    height: 100%;
+    cursor: pointer;
+
+    &.selected {
+      background-color: var(--color-background-4) !important;
+      color: var(--color-text-secondary);
+    }
+
+    &.renaming {
+      margin-right: 0;
+      padding-right: 10px;
+    }
+
+    input {
+      color: black;
+      background-color: white;
+    }
+
+    .MuiInput-root {
+      margin-top: 0 !important;
+    }
+  }
+}
+
+.TopBar__tab:hover {
+  background-color: var(--color-background-4) !important;
+  color: var(--color-text-secondary) !important;
+}
+
+#TopBar__menu-container {
+  display: flex;
+  -webkit-app-region: no-drag;
+}
+
+#TopBar__controls {
+  display: flex;
+  flex-grow: 1;
+  justify-content: end;
+  border-right: 1px solid var(--color-border);
+}
+
+.TopBar__menu-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+
+  svg {
+    height: 18px;
+    color: var(--color-icon-primary);
+  }
+
+  svg:hover {
+    height: 20px;
+  }
+}
+
+.TopBar__menu-item:hover {
+  background-color: var(--color-background-5);
+}
+
+#TopBar__addBoard {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  -webkit-app-region: no-drag;
+  padding: 5px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+
+  svg {
+    color: var(--color-icon-primary);
+    height: 18px;
+  }
+
+  svg:hover {
+    height: 20px;
+  }
+}
+
+#TopBar__addBoard:hover {
+  background-color: var(--color-background-5);
+}
+
+browser-action-list {
+  -webkit-app-region: no-drag;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  padding: 5px 15px;
+  align-items: center;
+
+}

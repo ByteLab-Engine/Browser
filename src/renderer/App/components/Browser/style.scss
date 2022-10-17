@@ -1,0 +1,37 @@
+webview {
+  display: flex;
+  width: 100%;
+  background-color: white;
+}
+
+.Browser__container {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border: 1px solid var(--color-border);
+
+}
+
+.Browser__webview-container {
+  display: flex;
+  flex-grow: 1;
+}
+
+.Browser__is-full-size {
+  position: fixed !important;
+  top: 0px !important;
+  width: calc(100% - 200px) !important;
+  height: 100% !important;
+  transform: none !important;
+  left: 200px !important;
+}
+
+.Browser__is-minimized {
+  display: none !important;
+}
+
+.Browser__display-none {
+  display: none !important;
+}

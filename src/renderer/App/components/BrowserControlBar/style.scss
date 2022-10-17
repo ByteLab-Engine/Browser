@@ -1,0 +1,59 @@
+.BrowserControlBar__container {
+  height: 25px;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--color-background-secondary);
+
+  .BrowserControlBar__bookmark-control {
+    position: absolute;
+    right: 10px;
+    color: var(--color-icon-primary);
+  }
+}
+
+.BrowserControlBar__controls {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--color-text-primary);
+
+  .BrowserControlBar__control {
+    padding: 0px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+
+    svg {
+      height: 18px;
+    }
+
+    svg:hover {
+      height: 20px;
+    }
+  }
+
+  .BrowserControlBar__control:hover {
+    background-color: var(--color-background-5);
+  }
+}
+
+.BrowserControlBar__container .MuiInput-root {
+  margin-top: 0 !important;
+}
+
+.BrowserControlBar_url-input {
+  flex-grow: 1;
+  user-select: none;
+
+  input {
+    font-size: 14px;
+    background-color: var(--color-icon-secondary);
+    color: var(--color-text-secondary);
+    border-radius: 3px;
+    height: 15px;
+    padding-left: 5px;
+    padding-right: 30px;
+    margin-right: 5px;
+  }
+}

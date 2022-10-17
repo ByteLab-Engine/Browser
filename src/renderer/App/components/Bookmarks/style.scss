@@ -1,0 +1,89 @@
+#Bookmarks__container {
+  background-color: var(--color-background-secondary);
+  color: var(--color-text-primary);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+
+  #Bookmarks__centered-container {
+    display: flex;
+    width: 800px;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .Bookmarks__search {
+      margin-bottom: 30px;
+      border-radius: 3px;
+      height: 30px;
+      font-size: 15px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .Bookmarks_import-button {
+      width: fit-content;
+      align-self: flex-end;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.Bookmarks__item {
+  background-color: var(--color-background-primary);
+  padding: 20px;
+  border-radius: 3px;
+  box-shadow: 0px 1px 3px var(--color-background-tertiary);
+  margin-bottom: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+
+  .Bookmarks__item-text {
+    flex-grow: 1;
+    overflow: hidden;
+
+    .Bookmarks__item-tags {
+      display: flex;
+      flex-direction: row;
+      margin-top: 10px;
+
+      .MuiChip-root {
+        margin-right: 10px;
+      }
+    }
+
+    .Bookmarks__item-name {
+      font-weight: bold;
+    }
+
+    .Bookmarks__item-url {
+      overflow: hidden;
+      overflow-wrap: break-word;
+      height: 18px;
+    }
+  }
+
+  .Bookmarks__item-controls {
+    display: flex;
+    flex-direction: row;
+
+    .Bookmarks__item-control {
+      padding: 10px;
+    }
+
+    .Bookmarks__item-control:hover {
+      color: var(--color-icon-primary);
+    }
+  }
+
+}
+
+.Bookmarks__item:hover{
+  border: 1px solid var(--color-border);
+}
